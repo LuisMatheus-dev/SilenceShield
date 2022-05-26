@@ -1,0 +1,14 @@
+{
+  "name": "SilenceShield",
+  "version": "1.0.0",
+  "description": "Server para aplicação mobile SilenceShield",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^1.35.3",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}
