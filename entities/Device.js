@@ -10,7 +10,7 @@ class Device {
         this.systemId = systemId;
 
         this.setId();
-        this.saveDevice(status, nickname, systemId, this.#deviceId);
+        //this.saveDevice(status, nickname, systemId, this.#deviceId);
     }
 
     setId() {

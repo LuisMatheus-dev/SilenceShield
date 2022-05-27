@@ -1,5 +1,7 @@
 import express from 'express';
 import Device from '../entities/Device.js';
+import DeviceError from '../utils/DeviceError.js';
+
 
 const router = express.Router();
 
@@ -14,19 +16,21 @@ router.get('/', async( req, res, next ) => {
     }
 });
 
-router.post('/', async( req, res, next ) => {
-    const { status, nickname, hardwareID } = req.body;
-    console.log(req.body);
 
-    
-    try {
-        const device = await new Device(status, nickname, hardwareID);
-        res.status(201).json({ "msg": "Criado com Sucesso", "data": device });
+router.post('/', DeviceError.checkAssignedSystem,
 
-    } catch(error) {
-        next(error);
+    async( req, res, next ) => {
+        const { status, nickname, systemID } = req.body;
+        
+        try {
+            const device = new Device(status, nickname, systemID);
+            res.status(201).json({ "msg": "Criado com Sucesso", "data": device });
+
+        } catch(error) {
+            next(error);
+        }
     }
-})
+);
 
 
 
