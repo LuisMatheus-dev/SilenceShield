@@ -9,7 +9,7 @@ class User {
         this.systems = systems;
     }
 
-    get userData() {
+    static userData() {
         return UserData.getUserData();
     }
     
