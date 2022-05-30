@@ -6,7 +6,7 @@ class SystemData {
 
         try {
             let { data } = await database
-                .from('System')
+                .from('systems')
                 .select('*');
 
             return data;

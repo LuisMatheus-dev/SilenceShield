@@ -1,24 +1,16 @@
 import DeviceData from '../data/deviceData.js';
-import { nanoid } from 'nanoid';
 class Device {
 
-    #deviceId;
-
-    constructor(status, nickname, systemId) {
-        this.status = status;
-        this.nickname = nickname;
+    constructor( systemId, name, status ) {
         this.systemId = systemId;
+        this.name = name;
+        this.status = status;
 
-        this.setId();
-        //this.saveDevice(status, nickname, systemId, this.#deviceId);
-    }
-
-    setId() {
-        this.#deviceId = nanoid();
+        this.#saveDevice( systemId, name, status );
     }
     
-    saveDevice(status, nickname, systemId, deviceId) {
-        return DeviceData.saveDevice(status, nickname, systemId, deviceId);
+    #saveDevice( systemId, name, status ) {
+        return DeviceData.saveDevice( systemId, name, status );
     }
 
     static deviceData() {
@@ -29,10 +21,9 @@ class Device {
         return DeviceData.getDeviceData();
     }
 
-
-
-
-
+    static getById(deviceId) {
+        return DeviceData.getById(deviceId);
+    }
 }
 
 export default Device;

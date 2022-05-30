@@ -2,23 +2,17 @@ import SystemData from '../data/systemData.js';
 
 class System {
 
-    #systemId;
-
-    constructor(name, devices, enabled) {
-        this.name = name; //String
-        this.devices = devices; //Um array de 
+    constructor( userId, name, devices ) {
+        this.name = name;
+        this.user_id = userId;
+        this.devices = devices; //Um array de Dispositivos
         this.enabled = enabled;
         
-        this.#setId();
-        this.#saveDevice(name, devices, enabled, this.#systemId);
+        this.#saveSystem( name, userId, devices, enabled );
     }
 
-    #saveDevice(nickname, devices, enabled,systemId) {
-        return SystemData.saveSystem(nickname, devices, systemId, enabled);
-    }
-
-    #setId() {
-        this.#systemId = nanoid();
+    #saveSystem( name, userId, devices, enabled ) {
+        return SystemData.saveSystem( name, userId, devices, enabled );
     }
 
     get deviceCount() {

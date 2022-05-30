@@ -14,10 +14,11 @@ app.use('/device', devicesRoute);
 app.use('/user', userRoute);
 
 //End of Exceptions
-app.use(function(error, _, res, _) {
+app.use(function(error, req, res, next) {
     
-    if(error.message === '[ERROR 1] - Device assigned to non-existent device') {
-        res.status(500).send(error.message);
+    if(error) {
+        res.status(500).send('Erro Interno');
+        console.log(error);
     }
 })
 app.listen(3000);
