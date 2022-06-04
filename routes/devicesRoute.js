@@ -11,7 +11,6 @@ router.get('/', async( req, res, next ) => {
     try {
         const data = await Device.deviceData();
         res.json(data);
-        next(userId);
 
     } catch(error) {
         next(error);

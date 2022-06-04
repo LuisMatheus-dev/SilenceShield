@@ -9,7 +9,7 @@ class Auth {
             await User.verifyId( userId )
             next();
         } catch(error) {
-            next(error);
+            next(error.message);
         }
         
     }
