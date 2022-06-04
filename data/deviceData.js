@@ -35,7 +35,6 @@ class DeviceData {
             console.log(error)
         if(error) throw new Error(error);
         return data;
-
     }
 }
 

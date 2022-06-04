@@ -28,6 +28,14 @@ class User {
         return UserData.getUserData();
     }
 
+    static login( username, password ) {
+        return UserData.getUserDataByUsername( username, password );
+    }
+
+    static verifyId( userId ) {
+        return UserData.getUserById( userId );
+    } 
+
     #saveUser(  userId, fristName, lastName, username, password, systems ) {
         return UserData.saveUser( 
             userId, 

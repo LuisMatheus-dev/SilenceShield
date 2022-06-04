@@ -1,24 +1,27 @@
 import express from 'express';
 import Device from '../entities/Device.js';
+import User from '../entities/User.js';
 import DeviceError from '../utils/DeviceError.js';
 
 
 const router = express.Router();
 
 router.get('/', async( req, res, next ) => {
-
+    const { userId } =  req.params;
     try {
         const data = await Device.deviceData();
         res.json(data);
+        next(userId);
 
     } catch(error) {
         next(error);
     }
+ 
 });
 
 router.get('/:deviceId', async(req, res, next) => {
-    
     const { deviceId } = req.params;
+
     try {
       
         const data = await Device.getById(deviceId);
